@@ -147,43 +147,10 @@ public class Q5Main {
 
 }
 
-	// System.out.println("----------------------------------------------------------------");
+// System.out.println("----------------------------------------------------------------");
 
-	// for (int i = 0; i < 1000; i++) {
-	// if (Math.floor(Math.random()) == 0.0) {
-	// System.out.println("Key " + i + " : " + map.remove("Key " + i));
-	// }
-	// }
-
-	
-	
-
-	
-
-	
-
-	
-
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
+// for (int i = 0; i < 1000; i++) {
+// if (Math.floor(Math.random()) == 0.0) {
+// System.out.println("Key " + i + " : " + map.remove("Key " + i));
+// }
+// }
