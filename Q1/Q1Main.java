@@ -14,6 +14,7 @@ import java.util.List;
 
 public class Q1Main {
 
+	// bubble sort array in place
 	public void sort(String[] names) {
 		boolean isSorted = false;
 		while (!isSorted) {
@@ -29,6 +30,7 @@ public class Q1Main {
 		}
 	}
 
+	// reads file and splits it into names
 	public String[] readNames(String pathString) throws IOException, URISyntaxException {
 		File file = Paths.get(pathString).toFile();
 		FileReader fileReader = new FileReader(file);
@@ -45,7 +47,8 @@ public class Q1Main {
 		return content.toString().split(",");
 	}
 
-	public void writeToFile(String pathString, String[] names) throws IOException, URISyntaxException {
+	// writes the names to a file
+	public void writeNamesToFile(String pathString, String[] names) throws IOException, URISyntaxException {
 		File file = Paths.get(pathString).toFile();
 		FileWriter fileWriter = new FileWriter(file);
 		BufferedWriter writer = new BufferedWriter(fileWriter);
@@ -54,12 +57,13 @@ public class Q1Main {
 		writer.close();
 	}
 
+	// invocation method which reads the names, sorts them and writes them to a file
 	public void sortNames(String input, String output) throws IOException, URISyntaxException {
 		System.out.println(input);
 		System.out.println(output);
 		final String[] names = readNames(input);
 		sort(names);
-		writeToFile(output, names);
+		writeNamesToFile(output, names);
 	}
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
