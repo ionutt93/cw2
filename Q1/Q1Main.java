@@ -17,9 +17,12 @@ public class Q1Main {
 	// bubble sort array in place
 	public void sort(String[] names) {
 		boolean isSorted = false;
+		// keep iterating until the array is sorted
 		while (!isSorted) {
 			isSorted = true;
+			// traverse all the names
 			for (int i = 1; i < names.length; i++) {
+				// if names[i - 1] > names[i] then swap them around and mark as unsorted
 				if (names[i - 1].compareTo(names[i]) > 0) {
 					String temp = names[i];
 					names[i] = names[i - 1];
