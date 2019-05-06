@@ -22,6 +22,7 @@ public class Q3Main {
 
 		StringBuilder content = new StringBuilder();
 		String line;
+		// read line by line
 		while ((line = reader.readLine()) != null) {
 			content.append(line);
 			content.append("\n");
@@ -41,11 +42,14 @@ public class Q3Main {
 		writer.close();
 	}
 
+	// moves all the names smaller than the pivot before the pivot
+	// returns new partitioning index
 	private int partition(final String[] names, final int lo, final int hi) {
-		final String pivot = names[hi];
+		final String pivot = names[hi]; // the last element becomes the pivot
 		int i = lo;
 
 		for (int j = lo; j < hi; j++) {
+			// if an element is smaller than the pivot, move it to the left side
 			if (names[j].compareTo(pivot) <= 0) {
 				String temp = names[i];
 				names[i] = names[j];
@@ -54,6 +58,8 @@ public class Q3Main {
 			}
 		}
 
+		// move the pivot to the correct position, where all the elements on the left
+		// are smaller than it and all the elements on the right are bigger
 		String temp = names[i];
 		names[i] = names[hi];
 		names[hi] = temp;
@@ -61,14 +67,19 @@ public class Q3Main {
 		return i;
 	}
 
+	// quick sort algorithm
 	private void sort(final String[] names, final int li, final int hi) {
 		if (li < hi) {
+			// partitions the array and updates the partition index
 			int pivotIndex = partition(names, li, hi);
+			// recusivelly calls itself on the left partition
 			sort(names, li, pivotIndex - 1);
+			// and the right partition
 			sort(names, pivotIndex + 1, hi);
 		}
 	}
 
+	// reads the names, sorts them and writes them to a file
 	public void sortNames(String input, String output) throws Exception {
 		System.out.println(input);
 		System.out.println(output);
@@ -81,7 +92,7 @@ public class Q3Main {
 		// args 0 - name of file to read in a list of names
 		String inputFileName = "names.txt";
 		// args 1 - name of file to write out the sorted list of names
-		String outputFileName = "sorted.txt";
+		String outputFileName = "sorted_names.txt";
 		if (args.length == 1) {
 			inputFileName = args[0];
 		} else if (args.length == 2) {
