@@ -4,6 +4,7 @@
 
 #define NULL_CHAR '\0'
 
+// splits the string by "," generating an array of names and the array size
 void split(char buffer[], char *names[], int *count) {
   char *token = strtok(buffer, ",");
   int str_count = 0;
@@ -15,6 +16,7 @@ void split(char buffer[], char *names[], int *count) {
   *count = str_count;
 }
 
+// reads a file and generates the list of names and their count from it
 void read_names(char *path, char *names[], int *count) {
   FILE *fp = fopen(path, "r");
   if (fp == NULL) {
@@ -22,7 +24,7 @@ void read_names(char *path, char *names[], int *count) {
     exit(-1);
   }
 
-  char buffer[100 * 6000];
+  char buffer[100 * 6000]; // string buffer
   char ch;
   int char_count = 0;
   while ((ch = fgetc(fp)) != EOF) {
@@ -33,11 +35,13 @@ void read_names(char *path, char *names[], int *count) {
     }
   }
 
+  // split the buffer into names
   split(buffer, names, count);
 
   fclose(fp);
 }
 
+// writes an array of names to a file
 void write_names(char *path, char *names[], int count) {
   FILE *fp = fopen(path, "w");
   if (fp == NULL) {
@@ -54,17 +58,22 @@ void write_names(char *path, char *names[], int count) {
   fclose(fp);
 }
 
+// swaps names[i] and names[j]
 void swap(char *names[], int i, int j) {
   char *temp = names[i];
   names[i] = names[j];
   names[j] = temp;
 }
 
+// bubble sort algorithm
 void bubble_sort(char *names[], int length) {
   int sorted = 0;
+  // iterate untile sorted
   while (sorted == 0) {
     sorted = 1;
+    // traverse the whole array
     for (int i = 1; i < length; i++) {
+      // swap elements if they are not in the right order
       if (strcmp(names[i - 1], names[i]) > 0) {
         swap(names, i - 1, i);
         sorted = 0;

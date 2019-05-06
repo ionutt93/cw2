@@ -73,7 +73,7 @@ public class Q1Main {
 		// args 0 - name of file to read in a list of names
 		String inputFileName = "names.txt";
 		// args 1 - name of file to write out the sorted list of names
-		String outputFileName = "sorted.txt";
+		String outputFileName = "sorted_names.txt";
 		if (args.length == 1) {
 			inputFileName = args[0];
 		} else if (args.length == 2) {
