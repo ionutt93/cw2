@@ -9,9 +9,6 @@ import java.util.Arrays;
 
 public class Q8Main {
 
-	// private ArrayList<String> warAndPeace = new ArrayList<>();
-	// private ArrayList<String> redactWords = new ArrayList<>();
-
 	public static void main(String[] args) throws IOException {
 		// args 0 - name of file to read in text
 		String inputFileName = "warandpeace.txt";
