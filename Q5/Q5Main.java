@@ -20,6 +20,7 @@ class CustomMap<KeyType, ValueType> {
 		return index;
 	}
 
+	// resizes the array if over 70% capacity
 	private void resizeIfNeeded() {
 		if (Math.floor(size * 0.7) < count) {
 			System.out.println("Resizing ...");
@@ -28,6 +29,7 @@ class CustomMap<KeyType, ValueType> {
 			count = 0;
 			store = new Node[size];
 
+			// adds all the elements from the old store to the new one
 			for (int i = 0; i < oldStore.length; i++) {
 				Node<KeyType, ValueType> head = oldStore[i];
 				while (head != null) {
@@ -36,6 +38,8 @@ class CustomMap<KeyType, ValueType> {
 				}
 			}
 
+			// checks if all the elements from the previous store have been added to the new
+			// one
 			for (int i = 0; i < oldStore.length; i++) {
 				Node<KeyType, ValueType> head = oldStore[i];
 				while (head != null) {
@@ -137,20 +141,22 @@ public class Q5Main {
 
 	public static void main(String[] args) {
 		CustomMap<String, Integer> map = new CustomMap(10);
+
+		// adding dummy data for testing
 		for (int i = 0; i < 100; i++) {
 			map.add("Key " + i, i);
 			System.out.println("Added " + i);
+		}
+
+		// checking if the data has been added
+		for (int i = 0; i < 100; i++) {
 			System.out.println("Found " + map.find("Key " + i));
-			// System.out.println("Removed " + map.remove("Key " + i));
+		}
+
+		// checking if the data can be removed
+		for (int i = 0; i < 100; i++) {
+			System.out.println("Removed " + map.remove("Key " + i));
 		}
 	}
 
 }
-
-// System.out.println("----------------------------------------------------------------");
-
-// for (int i = 0; i < 1000; i++) {
-// if (Math.floor(Math.random()) == 0.0) {
-// System.out.println("Key " + i + " : " + map.remove("Key " + i));
-// }
-// }
