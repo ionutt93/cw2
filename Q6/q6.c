@@ -11,7 +11,7 @@ typedef struct stak {
 
 int size(myStack s) { return s.top; }
 
-// boolean function to check whether stack is empty or not
+// function to check whether stack is empty or not
 int isEmpty(myStack *s) {
   if (s->top == -1) {
     return 1;
