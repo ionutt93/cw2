@@ -74,20 +74,16 @@ void bubble_sort(char *names[], int length) {
 }
 
 int main(int argc, char *argv[]) {
-  char *input;
-  char *output;
+  char *input = "names.txt";
+  char *output = "sorted_names.txt";
 
   if (argc == 2) {
     printf("%s\n", "One argument provided");
     input = argv[1];
-    output = "sorted_names.txt";
   } else if (argc == 3) {
     printf("%s\n", "Two arguments provided");
     input = argv[1];
     output = argv[2];
-  } else {
-    printf("%s\n", "Please provide both the input file and output file");
-    return -1;
   }
 
   printf("Input file: %s\n", input);
