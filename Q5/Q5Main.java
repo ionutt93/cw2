@@ -56,9 +56,13 @@ class CustomMap<KeyType, ValueType> {
 	public void add(KeyType key, ValueType value) {
 		int index = hashKey(key);
 
+		// if position is free, save new Node give the key and value
 		if (store[index] == null) {
 			store[index] = new Node<KeyType, ValueType>(key, value);
 		} else {
+			// else we look though the linked list until we either find the key already
+			// present, in which case we overwrite the value and return from the method
+			// or we add a node (with the new key, value) as the new head of the list
 			Node<KeyType, ValueType> head = store[index];
 			while (head != null) {
 				if (head.key.equals(key)) {
@@ -71,6 +75,7 @@ class CustomMap<KeyType, ValueType> {
 			store[index] = new Node<KeyType, ValueType>(key, value, store[index]);
 		}
 
+		// update the count and resize if needed
 		count++;
 		resizeIfNeeded();
 	}
@@ -108,8 +113,11 @@ class CustomMap<KeyType, ValueType> {
 	public ValueType find(KeyType key) {
 		int index = hashKey(key);
 
+		// if we find something at index
 		if (store[index] != null) {
 			Node<KeyType, ValueType> head = store[index];
+			// we iterate down the list until we find the node with the correct key
+			// and return its value
 			while (head != null) {
 				if (head.key.equals(key)) {
 					return head.value;
@@ -121,6 +129,8 @@ class CustomMap<KeyType, ValueType> {
 	}
 }
 
+// data structure which holds data and the pointer to the next element, forming
+// a linked list
 class Node<KeyType, ValueType> {
 	public final KeyType key;
 	public ValueType value;
